@@ -5,20 +5,23 @@
 #                                                     +:+ +:+         +:+      #
 #    By: madorna- <madorna-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/11/03 06:40:30 by madorna-          #+#    #+#              #
-#    Updated: 2021/11/03 06:53:35 by madorna-         ###   ########.fr        #
+#    Created: 2021/11/03 06:52:19 by madorna-          #+#    #+#              #
+#    Updated: 2021/11/03 07:39:19 by madorna-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = megaphone.cpp
+SRCS =	main.cpp
 
-NAME = ex00
+NAME =	ft_phonebook
+INCLUDES =	Contacts.hpp
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 $(NAME): ./$(SRCS)
 	$(CC) $(SRCS) $(CFLAGS) -o $(NAME)
+
+all: $(NAME)
 
 clean:
 
