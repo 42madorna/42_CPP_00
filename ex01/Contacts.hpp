@@ -1,4 +1,4 @@
-class Contactss {
+class Contacts{
 	public:
 		int idx;
 		std::string f_name;
