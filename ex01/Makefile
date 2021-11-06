@@ -6,14 +6,14 @@
 #    By: madorna- <madorna-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/03 06:52:19 by madorna-          #+#    #+#              #
-#    Updated: 2021/11/03 07:39:19 by madorna-         ###   ########.fr        #
+#    Updated: 2021/11/06 13:24:48 by madorna-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS =	main.cpp
 
 NAME =	ft_phonebook
-INCLUDES =	Contacts.hpp
+INCLUDES =	Contacts.hpp PhoneBook.hpp
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
