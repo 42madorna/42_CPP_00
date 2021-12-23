@@ -62,7 +62,7 @@ void
 		printf("|%10d|%10s|%10s|%10s|\n", i, f_name.c_str(), l_name.c_str(), nickname.c_str());
 	}
 	printf("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
-	while (true)
+	while (!std::cin.eof())
 	{
 		std::cout << "Enter an index: ";
 		std::cin >> id;
@@ -92,7 +92,7 @@ int
 		i = 7;
 	}
 	// TODO: Error check
-	while (1)
+	while (!std::cin.eof())
 	{
 		std::cout << "Enter a name: ";
 		std::cin.ignore();
@@ -116,6 +116,9 @@ int
 		}
 		return (0);
 	}
+	std::cin.clear();
+	std::cin.ignore();
+	return (1);
 }
 
 int
@@ -147,9 +150,11 @@ int
 		}
 		else if (action == "ADD")
 		{
-			ft_add(&phone);
-			std::cout << "New contact added" << std::endl;
-			i = i == 7 ? 7 : i + 1;
+			if (!ft_add(&phone))
+			{
+				std::cout << "New contact added" << std::endl;
+				i = i == 7 ? 7 : i + 1;
+			}
 		}
 		else if (action == "SEARCH")
 			ft_search(&phone);
