@@ -6,7 +6,7 @@
 /*   By: madorna- <madorna-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 06:52:28 by madorna-          #+#    #+#             */
-/*   Updated: 2022/01/12 05:50:30 by madorna-         ###   ########.fr       */
+/*   Updated: 2022/01/12 06:25:05 by madorna-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,31 +92,33 @@ int
 		i = 7;
 	}
 	// TODO: Error check
-	while (!std::cin.eof())
-	{
+	do {
 		std::cout << "Enter a name: ";
 		std::cin.ignore();
 		std::getline(std::cin, phone->contacts[i].f_name);
+	} while (phone->contacts[i].f_name.empty());
+	do {
 		std::cout << "Enter the lastname: ";
+		std::cin.ignore();
 		std::getline(std::cin, phone->contacts[i].l_name);
+	} while (phone->contacts[i].l_name.empty());
+	do {
 		std::cout << "Enter a nickname: ";
+		std::cin.ignore();
 		std::getline(std::cin, phone->contacts[i].nickname);
+	} while (phone->contacts[i].nickname.empty());
+	do {
 		// FIXME: Infinite loop when entering text
 		std::cout << "Enter a phone number: ";
-		std::cin >> phone->contacts[i].phone;
+		std::cin.ignore();
+		std::getline(std::cin, phone->contacts[i].phone);
+	} while (phone->contacts[i].phone.empty());
+	do {
 		std::cout << "Enter their darkest secret: ";
 		std::cin.ignore();
 		std::getline(std::cin, phone->contacts[i].d_secret);
-		if (phone->contacts[i].f_name.empty() || phone->contacts[i].l_name.empty()
-			|| phone->contacts[i].nickname.empty() || !phone->contacts[i].phone
-			|| phone->contacts[i].d_secret.empty())
-		{
-			bzero(&phone->contacts[i], sizeof(Contacts));
-			std::cout << "Sorry, some info was empty, try again...";
-			continue ;
-		}
-		return (0);
-	}
+	} while (phone->contacts[i].d_secret.empty());
+	return (0);
 	std::cin.clear();
 	std::cin.ignore();
 	return (1);
