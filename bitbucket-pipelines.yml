@@ -4,16 +4,11 @@
 # The workflow allows running tests and code linting on the default branch.
 
 
-image: ubuntu:latest
+image: gcc:10.2
 
 
 pipelines:
   default:
-    - step:
-        name: Install dependencies
-        script:
-          - apt update
-          - apt install -y g++ build-essential
     - parallel:
         - step:
             name: Build and Run ex00
