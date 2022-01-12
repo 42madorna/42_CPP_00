@@ -6,21 +6,34 @@
 /*   By: madorna- <madorna-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 06:52:28 by madorna-          #+#    #+#             */
-/*   Updated: 2022/01/12 06:25:05 by madorna-         ###   ########.fr       */
+/*   Updated: 2022/01/12 09:14:15 by madorna-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "PhoneBook.hpp"
 
+int
+	is_phone_number(const std::string str)
+{
+	for (int i = 0; str[i]; i++)
+	{
+		if (std::isdigit(str[i]) == 0)
+			return (1);
+	}
+	if (str.length() != 9)
+		return (2);
+	return (0);
+}
+
 void
 	ft_display_info(Contacts contact)
 {
-	std::cout << contact.f_name << std::endl;
-	std::cout << contact.l_name << std::endl;
-	std::cout << contact.nickname << std::endl;
-	std::cout << contact.phone << std::endl;
-	std::cout << contact.d_secret << std::endl;
+	std::cout << "First name: " << contact.f_name << std::endl;
+	std::cout << "Last name: " << contact.l_name << std::endl;
+	std::cout << "Nickname: " << contact.nickname << std::endl;
+	std::cout << "Phone number: " << contact.phone << std::endl;
+	std::cout << "Their darkest secret: " << contact.d_secret << std::endl;
 }
 
 void
@@ -29,7 +42,7 @@ void
 	int id;
 	if (phone->contacts[0].l_name.empty())
 	{
-		std::cout << "Contact list empty" << std::endl;
+		std::cout << "Contact list empty, use ADD first" << std::endl;
 		return ;
 	}
 	printf("_____________________________________________\n");
@@ -42,19 +55,19 @@ void
 		std::string nickname;
 
 		f_name = phone->contacts[i].f_name;
-		if (std::strlen(f_name.c_str()) > 10)
+		if (f_name.length() > 10)
 		{
 			f_name[9] = '.';
 			f_name[10] = '\0';
 		}
 		l_name = phone->contacts[i].l_name;
-		if (std::strlen(l_name.c_str()) > 10)
+		if (l_name.length() > 10)
 		{
 			l_name[9] = '.';
 			l_name[10] = '\0';
 		}
 		nickname = phone->contacts[i].nickname;
-		if (std::strlen(nickname.c_str()) > 10)
+		if (nickname.length() > 10)
 		{
 			nickname[9] = '.';
 			nickname[10] = '\0';
@@ -62,26 +75,31 @@ void
 		printf("|%10d|%10s|%10s|%10s|\n", i, f_name.c_str(), l_name.c_str(), nickname.c_str());
 	}
 	printf("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
-	while (!std::cin.eof())
+	do
 	{
 		std::cout << "Enter an index: ";
 		std::cin >> id;
-		// if (id == '\0')
-		// 	break ;
 		if (0 > id || id > 7)
 			std::cout << "Index range must be between 0 and 7" << std::endl;
 		else
 		{
+			if (phone->contacts[id].f_name.empty())
+			{
+				std::cout << "Please enter an index that exists" << std::endl;
+				id = -1;
+				continue ;
+			}
 			ft_display_info(phone->contacts[id]);
 			break ;
 		}
-	}
+	} while (0 > id || id > 7);
 }
 
 int
 	ft_add(PhoneBook *phone)
 {
 	int i;
+	int p_ret;
 
 	for (i = 0; i < 8 && !phone->contacts[i].l_name.empty(); i++);
 	if (i == 8)
@@ -91,37 +109,37 @@ int
 			phone->contacts[a] = phone->contacts[a + 1];
 		i = 7;
 	}
-	// TODO: Error check
+	std::cin.clear();
+	std::cin.ignore();
 	do {
 		std::cout << "Enter a name: ";
-		std::cin.ignore();
 		std::getline(std::cin, phone->contacts[i].f_name);
 	} while (phone->contacts[i].f_name.empty());
 	do {
 		std::cout << "Enter the lastname: ";
-		std::cin.ignore();
 		std::getline(std::cin, phone->contacts[i].l_name);
 	} while (phone->contacts[i].l_name.empty());
 	do {
 		std::cout << "Enter a nickname: ";
-		std::cin.ignore();
 		std::getline(std::cin, phone->contacts[i].nickname);
 	} while (phone->contacts[i].nickname.empty());
 	do {
-		// FIXME: Infinite loop when entering text
 		std::cout << "Enter a phone number: ";
-		std::cin.ignore();
 		std::getline(std::cin, phone->contacts[i].phone);
+		if ((p_ret = is_phone_number(phone->contacts[i].phone)) != 0)
+		{
+			phone->contacts[i].phone.clear();
+			if (p_ret == 1)
+				std::cout << "Phone numbers can only contain numbers" <<  std::endl;
+			if (p_ret == 2)
+				std::cout << "Phone numbers must be 9 numbers long" << std::endl;
+		}
 	} while (phone->contacts[i].phone.empty());
 	do {
 		std::cout << "Enter their darkest secret: ";
-		std::cin.ignore();
 		std::getline(std::cin, phone->contacts[i].d_secret);
 	} while (phone->contacts[i].d_secret.empty());
 	return (0);
-	std::cin.clear();
-	std::cin.ignore();
-	return (1);
 }
 
 int
