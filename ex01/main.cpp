@@ -6,7 +6,7 @@
 /*   By: madorna- <madorna-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 06:52:28 by madorna-          #+#    #+#             */
-/*   Updated: 2022/01/12 09:14:15 by madorna-         ###   ########.fr       */
+/*   Updated: 2022/01/12 13:22:02 by madorna-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void
 void
 	ft_search(PhoneBook *phone)
 {
-	int id;
+	char id;
 	if (phone->contacts[0].l_name.empty())
 	{
 		std::cout << "Contact list empty, use ADD first" << std::endl;
@@ -79,20 +79,20 @@ void
 	{
 		std::cout << "Enter an index: ";
 		std::cin >> id;
-		if (0 > id || id > 7)
+		if ('0' > id || id > '7')
 			std::cout << "Index range must be between 0 and 7" << std::endl;
 		else
 		{
-			if (phone->contacts[id].f_name.empty())
+			if (phone->contacts[id - '0'].f_name.empty())
 			{
 				std::cout << "Please enter an index that exists" << std::endl;
 				id = -1;
 				continue ;
 			}
-			ft_display_info(phone->contacts[id]);
+			ft_display_info(phone->contacts[id - '0']);
 			break ;
 		}
-	} while (0 > id || id > 7);
+	} while ('0' > id || id > '7');
 }
 
 int
