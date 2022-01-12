@@ -16,7 +16,7 @@ pipelines:
               - cd ./ex00
               - make
               - ./megaphone
-              - ./megaphone hola | diff HOLA
+              - ./megaphone hola | diff <( printf '%s\n' "HOLA" ) -
               - ./megaphone que tal?
               - ./megaphone EsTo AlTeRnA MAYUSCULAS y minusculas
               - ./megaphone "ahora, todo junto!"
