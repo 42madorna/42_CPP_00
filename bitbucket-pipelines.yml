@@ -4,7 +4,7 @@
 # The workflow allows running tests and code linting on the default branch.
 
 
-image: c++:latest
+image: ubuntu:latest
 
 
 pipelines:
