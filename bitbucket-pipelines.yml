@@ -9,27 +9,26 @@ image: gcc:10.2
 
 pipelines:
   default:
-    - parallel:
-        - step:
-            name: Build and Run ex00
-            script:
-              - cd ex00
-              - make
-              - ./megaphone
-              - ./megaphone hola
-              - ./megaphone que tal?
-              - ./megaphone EsTo AlTeRnA MAYUSCULAS y minusculas
-              - ./megaphone "ahora, todo junto!"
-              - make fclean
-        - step:
-            name: Build and Run ex01
-            script:
-              - cd ex01
-              - make
-              - make fclean
-        - step:
-            name: Build and Run ex02
-            script:
-              - cd ex02
-              - make
-              - make fclean
+      - step:
+          name: Build and Run ex00
+          script:
+            - cd ex00
+            - make
+            - ./megaphone
+            - ./megaphone hola
+            - ./megaphone que tal?
+            - ./megaphone EsTo AlTeRnA MAYUSCULAS y minusculas
+            - ./megaphone "ahora, todo junto!"
+            - make fclean
+      - step:
+          name: Build and Run ex01
+          script:
+            - cd ex01
+            - make
+            - make fclean
+      - step:
+          name: Build and Run ex02
+          script:
+            - cd ex02
+            - make
+            - make fclean
