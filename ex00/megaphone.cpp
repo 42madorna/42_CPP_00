@@ -6,7 +6,7 @@
 /*   By: madorna- <madorna-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 06:23:56 by madorna-          #+#    #+#             */
-/*   Updated: 2021/11/03 06:52:55 by madorna-         ###   ########.fr       */
+/*   Updated: 2022/01/12 08:58:14 by madorna-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <cstring>
 
 int
-	main(int argc, char **argv)
+	main(int argc, char *argv[])
 {
 	if (argc == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
