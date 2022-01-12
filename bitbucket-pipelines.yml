@@ -13,7 +13,7 @@ pipelines:
         name: Install dependencies
         script:
           - apt update
-          - apt install g++ build-essential
+          - apt install -y g++ build-essential
     - parallel:
         - step:
             name: Build and Run ex00
