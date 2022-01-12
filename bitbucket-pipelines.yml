@@ -9,6 +9,10 @@ image: ubuntu:latest
 
 pipelines:
   default:
+    - step:
+        name: Install dependencies
+        script:
+          - apt install build-essential
     - parallel:
         - step:
             name: Build and Run ex00
