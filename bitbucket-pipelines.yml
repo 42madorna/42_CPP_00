@@ -15,11 +15,11 @@ pipelines:
             script:
               - cd ./ex00
               - make
-              - ./megaphone
-              - ./megaphone hola | diff <( printf '%s\n' "HOLA" ) -
-              - ./megaphone que tal?
-              - ./megaphone EsTo AlTeRnA MAYUSCULAS y minusculas
-              - ./megaphone "ahora, todo junto!"
+              - ./megaphone | diff - <(echo "* LOUD AND UNBEARABLE FEEDBACK NOISE * ")
+              - ./megaphone hola | diff - <(echo "HOLA ")
+              - ./megaphone que tal? | diff - <(echo "QUE TAL? ")
+              - ./megaphone EsTo AlTeRnA MAYUSCULAS y minusculas | diff - <(echo "ESTO ALTERNA MAYUSCULAS Y MINUSCULAS ")
+              - ./megaphone "ahora, todo junto!" | diff - <(echo "AHORA, TODO JUNTO! ")
               - make fclean
         - step:
             name: Build and Run ex01
