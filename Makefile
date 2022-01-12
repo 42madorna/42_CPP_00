@@ -5,30 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: madorna- <madorna-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/11/03 06:52:19 by madorna-          #+#    #+#              #
-#    Updated: 2021/11/06 13:24:48 by madorna-         ###   ########.fr        #
+#    Created: 2022/01/12 05:40:57 by madorna-          #+#    #+#              #
+#    Updated: 2022/01/12 05:43:32 by madorna-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =	tests.cpp																\
-		Account.cpp
+# Makefile to clean everything
 
-NAME =	account
-INCLUDES =	Account.hpp
+fclean:
+	make -C ex00 fclean
+	make -C ex01 fclean
+	make -C ex02 fclean
 
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
-
-$(NAME): ./$(SRCS)
-	$(CC) $(SRCS) $(CFLAGS) -o $(NAME)
-
-all: $(NAME)
-
-clean:
-
-fclean: clean
-	rm -rf $(NAME)
-
-re: fclean all
-
-.PHONY: all clean fclean re
+.PHONY: fclean
