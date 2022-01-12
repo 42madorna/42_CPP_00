@@ -15,7 +15,7 @@ pipelines:
             script:
               - cd ./ex00
               - make
-              - ./megaphone | diff - <(echo "* LOUD AND UNBEARABLE FEEDBACK NOISE * ")
+              - ./megaphone | diff - <(echo "* LOUD AND UNBEARABLE FEEDBACK NOISE *")
               - ./megaphone hola | diff - <(echo "HOLA ")
               - ./megaphone que tal? | diff - <(echo "QUE TAL? ")
               - ./megaphone EsTo AlTeRnA MAYUSCULAS y minusculas | diff - <(echo "ESTO ALTERNA MAYUSCULAS Y MINUSCULAS ")
