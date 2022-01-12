@@ -6,7 +6,7 @@
 /*   By: madorna- <madorna-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 06:52:28 by madorna-          #+#    #+#             */
-/*   Updated: 2021/11/06 13:26:42 by madorna-         ###   ########.fr       */
+/*   Updated: 2022/01/12 05:50:30 by madorna-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int
 		std::getline(std::cin, phone->contacts[i].l_name);
 		std::cout << "Enter a nickname: ";
 		std::getline(std::cin, phone->contacts[i].nickname);
+		// FIXME: Infinite loop when entering text
 		std::cout << "Enter a phone number: ";
 		std::cin >> phone->contacts[i].phone;
 		std::cout << "Enter their darkest secret: ";
