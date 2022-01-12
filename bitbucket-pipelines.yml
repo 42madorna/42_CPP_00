@@ -16,7 +16,7 @@ pipelines:
               - cd ./ex00
               - make
               - ./megaphone
-              - ./megaphone hola
+              - ./megaphone hola | diff HOLA
               - ./megaphone que tal?
               - ./megaphone EsTo AlTeRnA MAYUSCULAS y minusculas
               - ./megaphone "ahora, todo junto!"
