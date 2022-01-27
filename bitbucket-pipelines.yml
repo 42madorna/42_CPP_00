@@ -32,4 +32,6 @@ pipelines:
             script:
               - cd ./ex02
               - make
+              - ./account > out.log
+              - diff <(cut -c 18- out.log) <(cut -c 18- 19920104_091532.log)
               - make fclean
