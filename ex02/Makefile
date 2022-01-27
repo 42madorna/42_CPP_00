@@ -6,7 +6,7 @@
 #    By: madorna- <madorna-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/03 06:52:19 by madorna-          #+#    #+#              #
-#    Updated: 2021/11/06 13:24:48 by madorna-         ###   ########.fr        #
+#    Updated: 2022/01/27 20:51:51 by madorna-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME =	account
 INCLUDES =	Account.hpp
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -std=c++98 #-Werror
 
 $(NAME): ./$(SRCS)
 	$(CC) $(SRCS) $(CFLAGS) -o $(NAME)
